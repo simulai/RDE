@@ -18,10 +18,21 @@
 ## 2. 刻意未导入 / 未填写（不代填真相）
 
 1. 每条条件的**完整语义与形式化定义** → `content` 内仅 `【待人工确认：完整定义与形式化】` 标记；
-2. 任意两条条件之间的**关系类型、方向、真值** → 28 个槽位全部 `relation=null, direction=null, asserted=false, status=待人工确认`；
-3. **单调性**：不预设任何单调关系（`monotonicity_assumed` 全为 `false`）；
-4. 任何**证据、推导路线、组合判定结果** → `current_evidence=[]`、`routes=[]`、`proof_obligations` 全部 `status=open`；
-5. 256 组合空间中的**任何具体组合** → 不枚举、不赋值。
+2. 每条条件的**必要性主张与反证条件** → `necessity_claim`（`asserted=false`、状态 unknown）与
+   `falsification_conditions`（内容仅占位标记）字段已就位，但**内容不代填**；
+3. 任意两条条件之间的**关系类型、方向、真值** → 28 个槽位全部 `relation=null, direction=null, asserted=false, status=待人工确认`；
+4. **单调性**：不预设任何单调关系（`monotonicity_assumed` 全为 `false`）；
+5. 任何**证据、推导路线、组合判定结果** → `current_evidence=[]`、`routes=[]`、`proof_obligations` 全部 `status=open`；
+6. 256 组合空间中的**任何具体组合** → 不枚举、不赋值。
+
+## 2b. 内容四分类（任务书 Task 4 要求"区分已明确的定义、研究假说、逻辑推导、经验依据"）
+
+| 类别 | 本导入中的位置 | 状态 |
+|---|---|---|
+| 已明确的定义 | `definitions.json` 的 8 条 `content`（仅条件名称逐字来自任务书） | 名称已明确；**完整定义待人工确认** |
+| 研究假说 | `hypotheses.json` 的 28 个关系假设槽位（Hypothesis 节点形态）+ 各条件 `necessity_claim` | **全部未断言**（`asserted=false`、unknown/none） |
+| 逻辑推导 | **无** —— 图中 0 条 `entails` 边、0 条 derivation 路线 | 尚无任何已确认推导 |
+| 经验依据 | **无** —— 无任何 evidence 节点、`current_evidence` 全空 | 尚无任何经验证据 |
 
 ## 3. 状态策略（全量核查见 U01–U03）
 
@@ -47,8 +58,9 @@
 ## 6. 待人工确认清单（不隐藏）
 
 1. 八条件的完整定义与形式化（definitions.json 逐节点标记）；
-2. 28 个关系假设槽位的关系类型/方向/依据（hypotheses.json 逐槽位标记）；
-3. 是否新增 `hypothesis` 节点类型（第 4 节）；
-4. 五类关系约束中哪些实际存在于 UCS 材料（当前仅为待选清单）；
-5. Phase 1 占位文件 `examples/ucs_example.json` 的替换/废弃决定；
-6. 真实 UCS 研究材料（论文/笔记/数据）的导入位置与引用方式（`source.ref` 目前只指向任务书）。
+2. 各条件 `necessity_claim` 的主张表述与 `falsification_conditions` 的具体内容（当前为未断言占位）；
+3. 28 个关系假设槽位的关系类型/方向/依据（hypotheses.json 逐槽位标记）；
+4. 是否新增 `hypothesis` 节点类型（第 4 节）；
+5. 五类关系约束中哪些实际存在于 UCS 材料（当前仅为待选清单）；
+6. Phase 1 占位文件 `examples/ucs_example.json` 的替换/废弃决定；
+7. 真实 UCS 研究材料（论文/笔记/数据）的导入位置与引用方式（`source.ref` 目前只指向任务书）。

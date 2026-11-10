@@ -81,4 +81,4 @@ tests/adversarial/test_ucs_import_integrity.py::test_u05_graph_loads_into_engine
 tests/adversarial/test_ucs_import_integrity.py::test_u06_no_combination_enumeration_no_monotonicity_anywhere PASSED [ 98%]
 tests/adversarial/test_ucs_import_integrity.py::test_u07_pending_markers_present_not_completed PASSED [100%]
 
-============================== 75 passed in 0.17s ==============================
+============================== 75 passed in 0.18s ==============================

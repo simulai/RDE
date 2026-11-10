@@ -63,6 +63,14 @@ def test_u01_definitions_eight_conditions_exact_names_and_states():
         assert node["proposition_state"] == "unknown"
         assert node["evidence_state"] == "none"
         assert node["work_state"] == "proposed"
+        # 任务书 Task 4：每个条件必须有【必要性主张】与【反证条件】字段 —— 且必须是未断言的占位
+        nc = node["necessity_claim"]
+        assert nc["asserted"] is False, "必要性主张未确认，不得断言"
+        assert nc["proposition_state"] == "unknown" and nc["evidence_state"] == "none"
+        assert nc["status"] == "待人工确认"
+        fc = node["falsification_conditions"]
+        assert len(fc) == 1 and fc[0]["status"] == "待人工确认"
+        assert "待人工确认" in fc[0]["condition"], "反证条件内容不代填"
         validate_node(node)
     # _meta：封闭空间 + 不预设单调 + 不代填
     meta = data["_meta"]

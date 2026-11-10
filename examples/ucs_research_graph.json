@@ -9,7 +9,8 @@
       "本图可直接载入 RDE（create_node 逐节点，无任何状态转换事件）；",
       "edges 为空数组是刻意的：未经确认的关系不进入图结构（无 entails 边）；",
       "全部节点 proposition_state=unknown、evidence_state=none、work_state=proposed；",
-      "2^8=256 为封闭组合空间（结构性计数），不枚举、不判定、不预设单调性。"
+      "2^8=256 为封闭组合空间（结构性计数），不枚举、不判定、不预设单调性。",
+      "条件节点含 necessity_claim / falsification_conditions 字段，全部待人工确认、asserted=false。"
     ],
     "combination_space_size": 256,
     "combination_space": "closed",
@@ -35,7 +36,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N1 选择性信息压缩 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n1",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n2",
@@ -55,7 +71,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N2 稳定离散化 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n2",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n3",
@@ -75,7 +106,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N3 可组合结构 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n3",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n4",
@@ -95,7 +141,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N4 后果接地 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n4",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n5",
@@ -115,7 +176,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N5 双向耦合 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n5",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n6",
@@ -135,7 +211,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N6 可修订性 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n6",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n7",
@@ -155,7 +246,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N7 历史连续性 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n7",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "definition-ucs-n8",
@@ -175,7 +281,22 @@
       ],
       "proposition_state": "unknown",
       "evidence_state": "none",
-      "work_state": "proposed"
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N8 有限资源协调 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n8",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
     },
     {
       "id": "claim-ucs-rel-01-02",
