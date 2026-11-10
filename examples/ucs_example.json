@@ -1,0 +1,179 @@
+{
+  "_meta": {
+    "case": "Test A — UCS 八条件",
+    "purpose": "检验多条件组合、分支、逻辑约束和反例管理",
+    "status": "structural-example",
+    "epistemic_status": "DESIGN-DECISION（结构性示例数据）",
+    "warnings": [
+      "本文件是按任务书 §7 Test A 描述构造的【结构性示例】，用于验证 schema 与状态语义表达力，不是 UCS 研究的真实实验结论。",
+      "八项条件的真实含义、条件间真实关系须由已有研究材料导入后替换；当前 conditions[] 的 id/描述为占位符。",
+      "不预设条件之间存在单调关系；constraints[] 中的必要/充分/互斥/替代/联合约束为表达格式示例，其真值待真实材料确认。",
+      "局部布尔组合空间 2^8 = 256；示例仅枚举了演示用的极小子集，不声称覆盖或判定该空间。"
+    ],
+    "combination_space_size": 256
+  },
+  "conditions": [
+    {"id": "definition-ucs-c1", "index": 1, "placeholder": true},
+    {"id": "definition-ucs-c2", "index": 2, "placeholder": true},
+    {"id": "definition-ucs-c3", "index": 3, "placeholder": true},
+    {"id": "definition-ucs-c4", "index": 4, "placeholder": true},
+    {"id": "definition-ucs-c5", "index": 5, "placeholder": true},
+    {"id": "definition-ucs-c6", "index": 6, "placeholder": true},
+    {"id": "definition-ucs-c7", "index": 7, "placeholder": true},
+    {"id": "definition-ucs-c8", "index": 8, "placeholder": true}
+  ],
+  "constraint_patterns": [
+    {
+      "id": "edge-ucs-nec-001", "created_at": "2026-01-01T00:00:00Z",
+      "type": "entails",
+      "kind_of_constraint": "necessary",
+      "pattern": "c_i 必要于 claim ⇒ claim entails c_i（表达格式示例，真值待导入）",
+      "premises": ["claim-ucs-0001"],
+      "conclusions": ["definition-ucs-c1"],
+      "category": "logical",
+      "validity": "active",
+      "placeholder": true
+    },
+    {
+      "id": "edge-ucs-suf-001", "created_at": "2026-01-01T00:00:00Z",
+      "type": "entails",
+      "kind_of_constraint": "sufficient",
+      "pattern": "c_a ∧ c_b 充分于 claim",
+      "premises": ["definition-ucs-c1", "definition-ucs-c2"],
+      "conclusions": ["claim-ucs-0002"],
+      "category": "logical",
+      "validity": "active",
+      "placeholder": true
+    },
+    {
+      "id": "edge-ucs-mut-001", "created_at": "2026-01-01T00:00:00Z",
+      "type": "contradicts",
+      "kind_of_constraint": "mutually_exclusive",
+      "pattern": "c_i 与 c_j 互斥（联合配置不可满足）",
+      "premises": ["definition-ucs-c3"],
+      "conclusions": ["definition-ucs-c4"],
+      "category": "evidential",
+      "validity": "active",
+      "placeholder": true
+    },
+    {
+      "id": "edge-ucs-alt-001", "created_at": "2026-01-01T00:00:00Z",
+      "type": "entails",
+      "kind_of_constraint": "alternative",
+      "pattern": "c_i 与 c_j 可替代（至少其一即可的路线）",
+      "premises": ["definition-ucs-c5"],
+      "conclusions": ["claim-ucs-0003"],
+      "category": "logical",
+      "validity": "active",
+      "placeholder": true
+    },
+    {
+      "id": "edge-ucs-jnt-001", "created_at": "2026-01-01T00:00:00Z",
+      "type": "entails",
+      "kind_of_constraint": "joint",
+      "pattern": "c_5 ∧ c_6 ∧ c_7 联合约束",
+      "premises": ["definition-ucs-c5", "definition-ucs-c6", "definition-ucs-c7"],
+      "conclusions": ["claim-ucs-0004"],
+      "category": "logical",
+      "validity": "active",
+      "placeholder": true
+    }
+  ],
+  "state_demo": {
+    "description": "展示三状态维度如何表达『三值不够』的组合情形（仅演示表达力，不表示 UCS 的任何结论）。",
+    "assignments": [
+      {
+        "assignment_id": "assign-001",
+        "combination": {"c1": true, "c2": true, "c3": false, "c4": false, "c5": true, "c6": false, "c7": false, "c8": false},
+        "claim": {
+          "id": "claim-ucs-0001",
+          "type": "claim",
+          "version": 1,
+          "created_at": "2026-01-01T00:00:00Z",
+          "source": {"origin": "human", "note": "structural example placeholder"},
+          "scope": "UCS 局部布尔组合空间（示例子集）",
+          "content": "占位：条件组合 C 满足命题 P1（真实命题待导入）",
+          "definition_versions": [{"id": "definition-ucs-c1", "version": 1}],
+          "assumptions": [{"id": "assumption-ucs-a1", "version": 1}],
+          "dependency_nodes": ["definition-ucs-c1", "definition-ucs-c2"],
+          "proof_obligations": [
+            {"id": "po-1", "statement": "占位：组合语义下的推导义务", "track": "mathematical", "status": "open"}
+          ],
+          "falsification_conditions": ["存在使 P1 为假的合法组合（结构示例）"],
+          "current_evidence": [],
+          "proposition_state": "unknown",
+          "evidence_state": "none",
+          "work_state": "proposed",
+          "next_research_action": {"action": "占位：形式化条件语义", "decision_ref": null},
+          "routes": []
+        }
+      },
+      {
+        "assignment_id": "assign-002",
+        "note": "同一命题在组合空间另一处：语义 unknown 但已有初步证据支持 —— 三值模型无法表达的情形。",
+        "claim": {
+          "id": "claim-ucs-0002",
+          "type": "claim",
+          "version": 1,
+          "created_at": "2026-01-01T00:00:00Z",
+          "source": {"origin": "human", "note": "structural example placeholder"},
+          "scope": "UCS 局部布尔组合空间（示例子集）",
+          "content": "占位：条件 c1 ∧ c2 蕴含 P2（真实命题待导入）",
+          "definition_versions": [{"id": "definition-ucs-c1", "version": 1}, {"id": "definition-ucs-c2", "version": 1}],
+          "assumptions": [{"id": "assumption-ucs-a1", "version": 1}],
+          "dependency_nodes": ["definition-ucs-c1", "definition-ucs-c2"],
+          "proof_obligations": [
+            {"id": "po-2", "statement": "占位：蕴含证明义务", "track": "mathematical", "status": "open"}
+          ],
+          "falsification_conditions": ["占位：反例组合 (c1=1, c2=1, P2=0)"],
+          "current_evidence": ["evidence-ucs-e1"],
+          "proposition_state": "unknown",
+          "evidence_state": "supported",
+          "work_state": "active",
+          "next_research_action": {"action": "占位：构造反例组合扫描", "decision_ref": "decision-ucs-d1"},
+          "routes": ["derivation-ucs-d1", "derivation-ucs-d2"]
+        }
+      },
+      {
+        "assignment_id": "assign-003",
+        "note": "冲突证据表达：同一命题收到方向相反的两条证据 → mixed，冲突不被覆盖（验收标准 6）。",
+        "claim": {
+          "id": "claim-ucs-0003",
+          "type": "claim",
+          "version": 1,
+          "created_at": "2026-01-01T00:00:00Z",
+          "source": {"origin": "human", "note": "structural example placeholder"},
+          "scope": "UCS 局部布尔组合空间（示例子集）",
+          "content": "占位：替代条件路线等价性命题（待导入）",
+          "definition_versions": [{"id": "definition-ucs-c5", "version": 1}],
+          "assumptions": [{"id": "assumption-ucs-a2", "version": 1}],
+          "dependency_nodes": ["definition-ucs-c5"],
+          "proof_obligations": [
+            {"id": "po-3", "statement": "占位：等价性证明义务", "track": "mathematical", "status": "open"},
+            {"id": "po-4", "statement": "占位：组合扫描经验验证", "track": "empirical", "status": "open"}
+          ],
+          "falsification_conditions": ["占位：扫描中出现与等价性冲突的组合"],
+          "current_evidence": ["evidence-ucs-e2", "evidence-ucs-e3"],
+          "proposition_state": "underdetermined",
+          "evidence_state": "mixed",
+          "work_state": "active",
+          "next_research_action": {"action": "占位：审查冲突证据来源", "decision_ref": null},
+          "routes": ["derivation-ucs-d3"]
+        }
+      }
+    ]
+  },
+  "derivation_routes_demo": {
+    "note": "验收标准 4：一个命题可拥有两条推导路线；路线对前提的依赖见 premise_sets（dependency_propagation Step 3 的输入格式）。",
+    "routes": [
+      {"id": "derivation-ucs-d2", "concludes": ["claim-ucs-0002"], "premise_sets": ["definition-ucs-c1", "definition-ucs-c2"], "track": "mathematical", "status": "draft"},
+      {"id": "derivation-ucs-d3", "concludes": ["claim-ucs-0003"], "premise_sets": ["definition-ucs-c5"], "track": "mathematical", "status": "draft"}
+    ]
+  },
+  "counterexample_management_demo": {
+    "note": "反例必须能改变知识状态（原则 5）：反例证据进入 contradicts 后触发证据状态转换与影响报告；此处只定义结构，不填写任何实验结果。",
+    "format": {
+      "evidence": {"id": "evidence-ucs-ce1", "type": "evidence", "evidence_kind": "counterexample", "contradicts": ["claim-ucs-0001"], "validity": "valid"}
+    }
+  }
+}

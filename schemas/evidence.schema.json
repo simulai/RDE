@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rde.local/schemas/evidence.schema.json",
+  "title": "RDE Evidence",
+  "description": "证据对象。一个证据可支持或反驳多个命题（验收标准 3）；证据永不删除，只有 invalidated/withdrawn（历史不可静默覆盖）。",
+  "type": "object",
+  "required": [
+    "id", "type", "version", "created_at", "source", "scope", "content",
+    "evidence_kind", "validity"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^evidence-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "type": { "const": "evidence" },
+    "version": { "type": "integer", "minimum": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "required": ["origin"],
+      "properties": {
+        "origin": { "enum": ["human", "agent", "import", "derived"] },
+        "ref": { "type": "string", "description": "可复现引用：数据集/论文/实验运行 ID（边界 6：可复现不等于正确）" },
+        "note": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "scope": { "type": "string", "minLength": 1 },
+    "content": { "type": "string", "minLength": 1 },
+    "evidence_kind": { "enum": ["experimental", "observational", "analytical", "testimonial", "counterexample"] },
+    "data_ref": { "type": ["string", "null"] },
+    "supports": { "type": "array", "items": { "type": "string" }, "description": "被支持的 claim ID 列表" },
+    "contradicts": { "type": "array", "items": { "type": "string" }, "description": "被反驳的 claim ID 列表（反例必须能改变知识状态，原则 5）" },
+    "validity": { "enum": ["valid", "invalidated", "withdrawn"] },
+    "invalidation": {
+      "type": ["object", "null"],
+      "required": ["reason", "actor", "seq"],
+      "properties": {
+        "reason": { "type": "string" },
+        "actor": { "type": "string", "pattern": "^(human|system|agent:[a-z0-9._-]+)$" },
+        "seq": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "experiment_ref": { "type": ["string", "null"], "description": "关联 Experiment 节点" }
+  },
+  "$defs": {
+    "evidence_state": {
+      "enum": ["none", "supported", "contradicted", "mixed", "insufficient", "invalidated"],
+      "description": "被证据对象承载的命题侧证据状态（归属 Claim 记录）。转换表见 docs/state_semantics.md §2.1；冲突 → mixed，不得被覆盖（验收标准 6）。"
+    }
+  }
+}

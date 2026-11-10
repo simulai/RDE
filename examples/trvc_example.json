@@ -1,0 +1,92 @@
+{
+  "_meta": {
+    "case": "Test C — TRVC",
+    "purpose": "检验知识版本、例外学习和旧知识污染管理",
+    "status": "structural-example-pending-import",
+    "epistemic_status": "DESIGN-DECISION（结构性示例数据）",
+    "warnings": [
+      "本文件是按任务书 §7 Test C 描述构造的【结构性示例】，用于演示版本/例外/污染管理的数据形状。",
+      "TRVC 的真实实验记录尚未导入：使用已有真实实验记录时必须原样导入，不得重新解释或篡改实验结论。",
+      "任何 conclusion 字段在导入真实材料前保持占位；本文件不含任何 TRVC 实验结果。",
+      "『旧知识污染』在此表示为结构问题：旧版本知识被复用时必须携带其版本与适用范围（scope），示例展示复用与例外的表示法。"
+    ]
+  },
+  "version_chain_demo": {
+    "note": "验收标准 2：修改不静默改变旧版本；旧版本经 state_at(seq) 回溯重建。",
+    "chain": [
+      {"node": "definition-trvc-d1", "version": 1, "superseded_by": {"version": 2}, "status": "superseded"},
+      {"node": "definition-trvc-d1", "version": 2, "superseded_by": null, "status": "active"}
+    ]
+  },
+  "knowledge_items": [
+    {
+      "id": "claim-trvc-k1",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-01-01T00:00:00Z",
+      "source": {"origin": "import", "note": "pending real-material import"},
+      "scope": "TRVC 基线语境（占位）",
+      "content": "占位：基线知识条目 K1（真实内容待导入）",
+      "definition_versions": [{"id": "definition-trvc-d1", "version": 1}],
+      "assumptions": [],
+      "dependency_nodes": ["definition-trvc-d1"],
+      "proof_obligations": [
+        {"id": "po-trvc-1", "statement": "占位：验证义务（导入后按真实材料填写）", "track": "empirical", "status": "open"}
+      ],
+      "falsification_conditions": ["占位：出现与 K1 冲突的例外情形"],
+      "current_evidence": ["evidence-trvc-e1"],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "active",
+      "next_research_action": {"action": "占位：导入已有真实实验记录", "decision_ref": null},
+      "routes": []
+    }
+  ],
+  "exception_learning_demo": {
+    "note": "例外学习：新知识（例外）写入时旧知识保持，二者以范围限定共存；冲突进入 mixed 而非覆盖（原则 5、验收标准 6）。",
+    "shape": {
+      "base_claim": "claim-trvc-k1",
+      "exception_claim": {
+        "id": "claim-trvc-k1-ex1",
+        "type": "claim",
+        "scope": "TRVC 例外子域 E1（占位，与基线 scope 不相交或部分相交）",
+        "content": "占位：例外知识（真实内容待导入）",
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "work_state": "proposed",
+        "relation_to_base": "refines（例外细化基线范围，不取代基线）",
+        "placeholder": true
+      },
+      "linking_edge": {
+        "id": "edge-trvc-refine-001", "created_at": "2026-01-01T00:00:00Z",
+        "type": "refines",
+        "category": "structural",
+        "premises": ["claim-trvc-k1-ex1"],
+        "conclusions": ["claim-trvc-k1"],
+        "validity": "active"
+      },
+      "pollution_guard": {
+        "rule": "复用旧知识必须引用其 (id, version, scope)；scope 外使用 → not_applicable 判定，而非静默套用",
+        "event": "node_version_created + impact_report_generated"
+      }
+    }
+  },
+  "verification_and_consolidation_demo": {
+    "note": "验证与巩固：巩固 = work_state 推进（formalized→active→completed），由状态机限制；证据状态不由巩固事件改变。",
+    "sequence_shape": [
+      "node_created (exception claim, proposed)",
+      "evidence_appended → evidence_state_changed (none→…)",
+      "work_state_changed (proposed→formalized→active)",
+      "human_approval_granted? → work_state_changed (→completed) [经验轨需外部/人类签署]"
+    ]
+  },
+  "conflicting_evidence_demo": {
+    "note": "证据冲突与结论修订：先 mixed，只有在旧证据被显式 invalidation 后才能到达 contradicted；修订产生新版本而非覆盖。",
+    "shape": {
+      "evidence_a": {"id": "evidence-trvc-e1", "supports": ["claim-trvc-k1"], "validity": "valid", "placeholder": true},
+      "evidence_b": {"id": "evidence-trvc-e2", "contradicts": ["claim-trvc-k1"], "validity": "valid", "placeholder": true},
+      "expected_evidence_state": "mixed",
+      "revision_path": "claim-trvc-k1: node_version_created (v2) 后由 justification 绑定的推导决定 proposition_state"
+    }
+  }
+}

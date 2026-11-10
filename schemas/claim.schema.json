@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rde.local/schemas/claim.schema.json",
+  "title": "RDE Claim",
+  "description": "命题/研究主张完整记录（任务书 §5）。三状态维度独立存储：命题语义状态、证据状态、工作状态；禁止单一状态字段（§4）。",
+  "type": "object",
+  "required": [
+    "id", "type", "version", "created_at", "source", "scope", "content",
+    "definition_versions", "assumptions", "dependency_nodes",
+    "proof_obligations", "falsification_conditions", "current_evidence",
+    "proposition_state", "evidence_state", "work_state", "next_research_action"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^claim-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "type": { "const": "claim" },
+    "version": { "type": "integer", "minimum": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "object", "required": ["origin"], "properties": { "origin": { "enum": ["human", "agent", "import", "derived"] }, "ref": { "type": "string" }, "note": { "type": "string" } }, "additionalProperties": false },
+    "scope": { "type": "string", "minLength": 1 },
+    "content": { "type": "string", "minLength": 1 },
+    "definition_versions": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "version"], "properties": { "id": { "type": "string" }, "version": { "type": "integer", "minimum": 1 } }, "additionalProperties": false }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "version"], "properties": { "id": { "type": "string" }, "version": { "type": "integer", "minimum": 1 } }, "additionalProperties": false }
+    },
+    "dependency_nodes": { "type": "array", "items": { "type": "string" } },
+    "proof_obligations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "track", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "statement": { "type": "string" },
+          "track": { "enum": ["mathematical", "empirical"], "description": "数学轨与经验轨分离（原则 2/3、边界 4/5）" },
+          "status": { "enum": ["open", "discharged", "failed", "withdrawn"] },
+          "discharged_by": { "type": ["string", "null"], "description": "derivation id（数学轨）或 decision/evidence 引用（经验轨）" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "falsification_conditions": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "current_evidence": { "type": "array", "items": { "type": "string" }, "description": "可支持或反驳多个命题的同一证据在此以 ID 复用（验收标准 3）" },
+    "proposition_state": { "$ref": "#/$defs/proposition_state" },
+    "evidence_state": { "$ref": "evidence.schema.json#/$defs/evidence_state" },
+    "work_state": { "$ref": "#/$defs/work_state" },
+    "next_research_action": {
+      "type": "object",
+      "required": ["action"],
+      "properties": {
+        "action": { "type": "string" },
+        "decision_ref": { "type": ["string", "null"] },
+        "note": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "routes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "derivation ID 列表：一个命题可拥有多条独立推导路径（验收标准 4）"
+    }
+  },
+  "$defs": {
+    "proposition_state": {
+      "enum": ["true_in_scope", "false_in_scope", "unknown", "underdetermined", "not_applicable"],
+      "description": "true_in_scope/false_in_scope 必须绑定假设与适用范围（原则 4）。转换表见 docs/state_semantics.md §1.1。"
+    },
+    "work_state": {
+      "enum": ["proposed", "formalized", "active", "blocked", "completed", "superseded", "archived"]
+    }
+  }
+}

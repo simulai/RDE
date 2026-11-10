@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rde.local/schemas/edge.schema.json",
+  "title": "RDE Edge (Hyperedge)",
+  "description": "类型化超边：允许 1..n 前提 → 1..n 结论（任务书 §3.2）。关系语义严格分离：逻辑类/证据类/管理类互斥，禁止相关性、因果、蕴含、项目依赖混用。",
+  "type": "object",
+  "required": ["id", "type", "premises", "conclusions", "created_at", "category", "validity"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^edge-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "type": {
+      "enum": [
+        "depends_on", "entails",
+        "supports", "contradicts", "tests",
+        "instantiates", "refines", "supersedes",
+        "motivates", "blocks", "derived_from"
+      ]
+    },
+    "category": {
+      "enum": ["logical", "evidential", "structural", "managerial"],
+      "description": "类别与 type 必须一致（见 graph_semantics.md §3），由校验器强制。"
+    },
+    "premises": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "前提/来源端节点 ID。方向语义随 type：supports 的 premises 是证据端，conclusions 是命题端。"
+    },
+    "conclusions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "object", "required": ["origin"], "properties": { "origin": { "enum": ["human", "agent", "import", "derived"] }, "ref": { "type": "string" }, "note": { "type": "string" } }, "additionalProperties": false },
+    "scope": { "type": "string" },
+    "validity": {
+      "enum": ["active", "superseded", "invalidated", "withdrawn"],
+      "description": "边失效不删除（历史不可静默覆盖）。"
+    },
+    "valid_since_seq": { "type": ["integer", "null"] },
+    "valid_until_seq": { "type": ["integer", "null"] },
+    "bound_versions": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "version"], "properties": { "id": { "type": "string" }, "version": { "type": "integer", "minimum": 1 } }, "additionalProperties": false },
+      "description": "该边所绑定的前提/结论节点版本引用。"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "entails" } } },
+      "then": { "properties": { "category": { "const": "logical" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "depends_on" } } },
+      "then": { "properties": { "category": { "const": "logical" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "supports" } } },
+      "then": { "properties": { "category": { "const": "evidential" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "contradicts" } } },
+      "then": { "properties": { "category": { "const": "evidential" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "tests" } } },
+      "then": { "properties": { "category": { "const": "evidential" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "motivates" } } },
+      "then": { "properties": { "category": { "const": "managerial" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "blocks" } } },
+      "then": { "properties": { "category": { "const": "managerial" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "derived_from" } } },
+      "then": { "properties": { "category": { "const": "managerial" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "supersedes" } } },
+      "then": { "properties": { "category": { "const": "structural" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "refines" } } },
+      "then": { "properties": { "category": { "const": "structural" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "instantiates" } } },
+      "then": { "properties": { "category": { "const": "structural" } } }
+    }
+  ],
+  "$defs": {
+    "category_by_type": {
+      "description": "逻辑: depends_on, entails | 证据: supports, contradicts, tests | 结构: instantiates, refines, supersedes | 管理: motivates, blocks, derived_from",
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# 本地密钥与临时文件（不得入库：任何 token/凭据）
+*.token
+.env
+.secrets/

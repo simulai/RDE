@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rde.local/schemas/node.schema.json",
+  "title": "RDE Node",
+  "description": "RDE 研究知识超图的通用节点。所有节点共享稳定 ID、类型、版本、创建时间、来源与适用范围（任务书 §3.1）。Claim 的完整记录另见 claim.schema.json。",
+  "type": "object",
+  "required": ["id", "type", "version", "created_at", "source", "scope"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(project|question|definition|assumption|claim|derivation|evidence|experiment|decision|artifact|version|event)-[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "稳定 ID：小写类型前缀 + slug。创建后永不复用；内容修改产生新版本（或分叉产生新 ID 并以 supersedes/fork 连接）。"
+    },
+    "type": {
+      "enum": ["project", "question", "definition", "assumption", "claim", "derivation", "evidence", "experiment", "decision", "artifact", "version", "event"]
+    },
+    "version": { "type": "integer", "minimum": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source": { "$ref": "#/$defs/source" },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "description": "适用范围。true_in_scope / false_in_scope 必须绑定明确假设与范围（原则 4）。"
+    },
+    "content": { "type": "string", "minLength": 1 },
+    "proposition_state": { "$ref": "claim.schema.json#/$defs/proposition_state" },
+    "evidence_state": { "$ref": "evidence.schema.json#/$defs/evidence_state" },
+    "work_state": { "$ref": "#/$defs/work_state" },
+    "supersedes": { "type": "array", "items": { "type": "string" } },
+    "fork_of": { "type": ["string", "null"] },
+    "labels": { "type": "array", "items": { "type": "string" } }
+  },
+  "allOf": [
+    { "$ref": "#/$defs/claim_required" },
+    { "$ref": "#/$defs/derivation_required" },
+    { "$ref": "#/$defs/decision_required" },
+    { "$ref": "#/$defs/evidence_required" }
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["origin"],
+      "properties": {
+        "origin": { "enum": ["human", "agent", "import", "derived"] },
+        "ref": { "type": "string" },
+        "note": { "type": "string" },
+        "actor": {
+          "type": "string",
+          "pattern": "^(human|system|agent:[a-z0-9._-]+)$",
+          "description": "事件 actor 同构；原则 9/10 的执行依据。"
+        }
+      },
+      "additionalProperties": false
+    },
+    "work_state": {
+      "enum": ["proposed", "formalized", "active", "blocked", "completed", "superseded", "archived"]
+    },
+    "version_ref": {
+      "type": "object",
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "decision_record": {
+      "type": "object",
+      "description": "M7 决策记录（任务书 §6.7）：目标、可选动作、选择理由、预算、预期信息价值、实际结果、决策是否有效。",
+      "required": ["goal", "options", "rationale", "budget", "expected_value"],
+      "properties": {
+        "goal": { "type": "string" },
+        "options": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "rationale": { "type": "string", "minLength": 1 },
+        "budget": { "type": "object" },
+        "expected_value": {
+          "type": "object",
+          "description": "预期信息价值：分维度记录，禁止合并为单一评分（第 12 节禁令）。",
+          "properties": {
+            "information_gain": { "type": ["number", "null"] },
+            "dependency_criticality": { "type": ["number", "null"] },
+            "falsification_value": { "type": ["number", "null"] },
+            "executability": { "type": ["number", "null"] },
+            "cost": { "type": ["number", "null"] },
+            "reuse_value": { "type": ["number", "null"] },
+            "contribution_note": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "actual_outcome": { "type": ["string", "null"] },
+        "decision_effective": { "type": ["boolean", "null"] },
+        "external_validation_ref": {
+          "type": ["string", "null"],
+          "description": "外部验证引用（原则 10：自我评价不可替代外部验证）。"
+        }
+      },
+      "additionalProperties": false
+    },
+    "claim_required": {
+      "if": { "properties": { "type": { "const": "claim" } }, "required": ["type"] },
+      "then": {
+        "required": [
+          "content", "definition_versions", "assumptions", "dependency_nodes",
+          "proof_obligations", "falsification_conditions", "current_evidence",
+          "proposition_state", "evidence_state", "work_state", "next_research_action"
+        ],
+        "properties": {
+          "definition_versions": { "type": "array", "items": { "$ref": "#/$defs/version_ref" } },
+          "assumptions": { "type": "array", "items": { "$ref": "#/$defs/version_ref" } },
+          "dependency_nodes": { "type": "array", "items": { "type": "string" } },
+          "proof_obligations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "statement", "track"],
+              "properties": {
+                "id": { "type": "string" },
+                "statement": { "type": "string" },
+                "track": {
+                  "enum": ["mathematical", "empirical"],
+                  "description": "双轨验收（理论边界 §3）：数学轨与经验轨互不授予对方状态。"
+                },
+                "status": { "enum": ["open", "discharged", "failed", "withdrawn"] }
+              },
+              "additionalProperties": false
+            }
+          },
+          "falsification_conditions": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "current_evidence": { "type": "array", "items": { "type": "string" } },
+          "next_research_action": {
+            "type": "object",
+            "required": ["action"],
+            "properties": {
+              "action": { "type": "string" },
+              "decision_ref": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "derivation_required": {
+      "if": { "properties": { "type": { "const": "derivation" } }, "required": ["type"] },
+      "then": {
+        "required": ["content", "premises", "concludes", "track"],
+        "properties": {
+          "premises": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "concludes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "track": { "enum": ["mathematical", "empirical"] },
+          "status": { "enum": ["draft", "completed", "invalidated"] }
+        }
+      }
+    },
+    "decision_required": {
+      "if": { "properties": { "type": { "const": "decision" } }, "required": ["type"] },
+      "then": {
+        "required": ["content", "decision"],
+        "properties": { "decision": { "$ref": "#/$defs/decision_record" } }
+      }
+    },
+    "evidence_required": {
+      "if": { "properties": { "type": { "const": "evidence" } }, "required": ["type"] },
+      "then": { "required": ["content", "evidence_kind"], "properties": {
+        "evidence_kind": { "enum": ["experimental", "observational", "analytical", "testimonial", "counterexample"] }
+      } }
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rde.local/schemas/event.schema.json",
+  "title": "RDE Event",
+  "description": "不可变事件（append-only）。事件日志是唯一真相源；知识状态由事件重放重建（docs/event_sourcing.md）。哈希链 prev_hash/hash 防静默覆盖。",
+  "type": "object",
+  "required": ["event_id", "seq", "type", "timestamp", "actor", "target", "payload", "hash"],
+  "properties": {
+    "event_id": { "type": "string", "pattern": "^evt-[0-9a-f]{8}$" },
+    "seq": { "type": "integer", "minimum": 0 },
+    "type": {
+      "enum": [
+        "node_created", "node_version_created", "edge_created", "edge_validity_changed",
+        "superseded", "fork_created",
+        "proposition_state_changed", "evidence_state_changed", "work_state_changed",
+        "evidence_appended", "evidence_invalidated", "evidence_withdrawn",
+        "derivation_started", "derivation_completed", "derivation_invalidated",
+        "impact_report_generated",
+        "branch_created", "branch_merged", "branch_pruned", "question_reopened",
+        "decision_recorded", "human_approval_granted",
+        "north_star_modified",
+        "replay_checkpoint"
+      ]
+    },
+    "timestamp": { "type": "string", "format": "date-time", "description": "仅用于展示；重放顺序只依赖 seq。" },
+    "actor": {
+      "type": "string",
+      "pattern": "^(human|system|agent:[a-z0-9._-]+)$",
+      "description": "原则 9：north_star_modified 只能由 human 发出；原则 10：agent 自我评价不可单独授予状态升级。"
+    },
+    "target": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "payload": { "type": "object" },
+    "prev_hash": {
+      "type": "string",
+      "pattern": "^(GENESIS|[0-9a-f]{64})$",
+      "description": "首条事件为 GENESIS。"
+    },
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "schema_version": { "type": "integer", "minimum": 1, "default": 1 },
+    "approval_ref": { "type": ["string", "null"], "description": "需要人类授权的事件引用 human_approval_granted 的 event_id。" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "proposition_state_changed" } } },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["from", "to", "justification"],
+            "properties": {
+              "from": { "enum": ["true_in_scope", "false_in_scope", "unknown", "underdetermined", "not_applicable"] },
+              "to": { "enum": ["true_in_scope", "false_in_scope", "unknown", "underdetermined", "not_applicable"] },
+              "justification": {
+                "type": "object",
+                "required": ["route"],
+                "properties": {
+                  "route": { "enum": ["mathematical", "empirical", "refutation", "scope_change", "reopening"] },
+                  "derivations": { "type": "array", "items": { "type": "string" } },
+                  "assumptions": { "type": "array", "items": { "type": "object", "required": ["id", "version"], "properties": { "id": { "type": "string" }, "version": { "type": "integer" } } } },
+                  "evidence": { "type": "array", "items": { "type": "string" } },
+                  "note": { "type": "string" }
+                },
+                "additionalProperties": false
+              },
+              "proposed_only": { "type": "boolean", "description": "true = 仅提议，待 human_approval_granted（H-DEP-002）。" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "evidence_state_changed" } } },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["from", "to", "driven_by"],
+            "properties": {
+              "from": { "enum": ["none", "supported", "contradicted", "mixed", "insufficient", "invalidated"] },
+              "to": { "enum": ["none", "supported", "contradicted", "mixed", "insufficient", "invalidated"] },
+              "driven_by": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "触发该转换的证据事件 ID；证据状态只能由证据类事件驱动。" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "work_state_changed" } } },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["from", "to"],
+            "properties": {
+              "from": { "enum": ["proposed", "formalized", "active", "blocked", "completed", "superseded", "archived"] },
+              "to": { "enum": ["proposed", "formalized", "active", "blocked", "completed", "superseded", "archived"] },
+              "reason": { "type": "string" },
+              "reopen": { "type": "boolean" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "decision_recorded" } } },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["decision"],
+            "properties": { "decision": { "$ref": "node.schema.json#/$defs/decision_record" } },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "north_star_modified" } } },
+      "then": { "properties": { "actor": { "const": "human" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "impact_report_generated" } } },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["change", "directly_affected", "still_valid", "unjudgeable"],
+            "properties": {
+              "change": { "type": "object", "required": ["node", "kind"], "properties": { "node": { "type": "string" }, "kind": { "enum": ["modified", "refuted", "withdrawn", "superseded"] }, "seq": { "type": "integer" } }, "additionalProperties": false },
+              "directly_affected": { "type": "array", "items": { "type": "string" } },
+              "propagated": { "type": "array", "items": { "type": "object" } },
+              "still_valid": { "type": "array", "items": { "type": "string" } },
+              "route_stopped": { "type": "array", "items": { "type": "string" } },
+              "unjudgeable": { "type": "array", "items": { "type": "object", "required": ["node", "reason"], "properties": { "node": { "type": "string" }, "reason": { "type": "string" } }, "additionalProperties": false } }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  ]
+}

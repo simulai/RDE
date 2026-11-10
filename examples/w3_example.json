@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "case": "Test B — W3 不可达路由",
+    "purpose": "检验研究策略调度：意图形成、行动执行、预测与实际后果、不可达判定、意图修订、失败路线记录、负臂与作弊臂的审计",
+    "status": "DRAFT — NOT APPROVED FOR PILOT",
+    "epistemic_status": "OPEN-QUESTION",
+    "warnings": [
+      "W3 当前是草稿，尚未获正式 pilot 批准（任务书 §7 Test B）。",
+      "本文件只定义【结构与审计字段格式】，不包含任何实验结果、成功率、路由数据或结论；任何此类内容在 pilot 批准前不得写入。",
+      "『预测 vs 实际』字段全部为 null 占位：pilot 执行后才能由真实记录填充。",
+      "负臂（negative arm）与作弊臂（cheating arm）审计是结构性要求，不代表已观察到相应现象。"
+    ],
+    "pilot_approved": false
+  },
+  "workflow_template": [
+    {"step": 1, "name": "intent_formation", "produces": "intent"},
+    {"step": 2, "name": "action_execution", "produces": "action"},
+    {"step": 3, "name": "outcome_observation", "produces": "predicted_vs_actual"},
+    {"step": 4, "name": "unreachable_determination", "produces": "unreachable_verdict"},
+    {"step": 5, "name": "intent_revision", "produces": "revised_intent"},
+    {"step": 6, "name": "failed_route_recording", "produces": "failed_route_record"},
+    {"step": 7, "name": "arm_audit", "produces": "arm_audit"}
+  ],
+  "intent_record": {
+    "id": "question-w3-intent-001",
+    "type": "question",
+    "version": 1,
+    "created_at": "2026-01-01T00:00:00Z",
+    "source": {"origin": "human", "note": "draft template"},
+    "scope": "W3 路由场景（草稿）",
+    "content": "占位：研究意图 I1（真实意图待 pilot 前定义）",
+    "work_state": "proposed",
+    "placeholder": true
+  },
+  "action_record_template": {
+    "id": "artifact-w3-action-001",
+    "type": "artifact",
+    "fields": ["intent_ref", "action_description", "executed_at", "executor"],
+    "placeholder": true
+  },
+  "prediction_vs_actual": {
+    "predicted": null,
+    "actual": null,
+    "deviation_note": null,
+    "recorded_at": null,
+    "placeholder": true
+  },
+  "unreachable_determination_template": {
+    "fields": ["target", "reachability_check", "verdict: reachable|unreachable|underdetermined", "justification", "scope"],
+    "example_shape_only": {
+      "target": null,
+      "verdict": "underdetermined",
+      "justification": "占位：判定记录必须绑定检查方法与适用范围；pilot 前不填真实判定"
+    }
+  },
+  "intent_revision_template": {
+    "event_type": "work_state_changed|proposition_state_changed",
+    "required_fields": ["from", "to", "justification.route", "human_approval_ref"],
+    "note": "意图修订必须留下不可变事件（M3/M7）；重大目标修订需人类授权（原则 9）"
+  },
+  "failed_route_record": {
+    "fields": ["route_id", "failure_kind", "evidence_ref", "archived_not_deleted"],
+    "placeholder": true,
+    "note": "失败路线记录后不得静默删除（原则 8）；路线剪枝对应 branch_pruned 事件"
+  },
+  "arm_audit": {
+    "negative_arm": {
+      "purpose": "检验『不应产生信息的对照臂』是否真的无信息",
+      "records": [],
+      "note": "结构占位；无观测数据"
+    },
+    "cheating_arm": {
+      "purpose": "审计『利用捷径/泄漏获得虚假收益』的臂",
+      "records": [],
+      "detection_hooks": ["information_gain 不一致", "预测与实际长期零偏差", "评价数据与训练数据重叠"],
+      "note": "检测钩子是设计要求（R4 自我质疑），不构成已实施验证（边界 8）"
+    },
+    "external_signoff_required": true
+  },
+  "decision_record_template": {
+    "id": "decision-w3-d1",
+    "type": "decision",
+    "decision": {
+      "goal": "占位：W3 下一步研究目标（pilot 批准后定义）",
+      "options": ["占位-选项A", "占位-选项B"],
+      "rationale": "占位：选择理由（M7）",
+      "budget": {"compute_units": null, "wallclock": null},
+      "expected_value": {
+        "information_gain": null,
+        "dependency_criticality": null,
+        "falsification_value": null,
+        "executability": null,
+        "cost": null,
+        "reuse_value": null,
+        "contribution_note": "分维度记录，不合并为单一评分（§12 禁令）"
+      },
+      "actual_outcome": null,
+      "decision_effective": null,
+      "external_validation_ref": null
+    },
+    "placeholder": true
+  }
+}
