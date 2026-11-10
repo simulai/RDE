@@ -99,6 +99,16 @@ def test_work_state_cannot_jump_to_completed_via_engine(rde: RDE):
     # 合法推进到 completed：formalized → active → completed
     rde.set_work_state("claim-z", "formalized")
     rde.set_work_state("claim-z", "active")
+    # L3（state_semantics §4）：证明义务未完成时，completed 仍必须被拒。
+    # [Phase 1.1 披露] 本用例在 Phase 1.1 审计前的版本直接允许了这次 completed，
+    # 与文档 L3 冲突（F-E03）；此处按*文档设计*修正期望，不是放松断言。
+    with pytest.raises(IllegalTransition, match="L3"):
+        rde.set_work_state("claim-z", "completed")
+    # 证明义务回填完成后（经内容修订，版本化留痕）方可 completed
+    node = rde.graph.require("claim-z")
+    obligations = [dict(o, status="discharged", discharged_by="derivation-z")
+                   for o in node["proof_obligations"]]
+    rde.revise_node("claim-z", {"proof_obligations": obligations}, reason="证明义务完成")
     rde.set_work_state("claim-z", "completed")
     assert rde.graph.require("claim-z")["work_state"] == "completed"
 

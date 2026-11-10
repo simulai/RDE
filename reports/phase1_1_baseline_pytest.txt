@@ -1,0 +1,52 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /home/ubuntu/RDE/.venv-audit/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/ubuntu/RDE
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 42 items
+
+tests/test_dependency_propagation.py::test_downstream_impact_report PASSED [  2%]
+tests/test_dependency_propagation.py::test_downstream_propagation_is_transitive PASSED [  4%]
+tests/test_dependency_propagation.py::test_single_route_failure_keeps_claim PASSED [  7%]
+tests/test_dependency_propagation.py::test_all_routes_broken_triggers_under_review PASSED [  9%]
+tests/test_dependency_propagation.py::test_independent_routes_survive_full_refutation PASSED [ 11%]
+tests/test_dependency_propagation.py::test_unjudgeable_reported PASSED   [ 14%]
+tests/test_dependency_propagation.py::test_missing_premise_node_reported_unjudgeable PASSED [ 16%]
+tests/test_dependency_propagation.py::test_evidence_change_needs_interpretation_not_logic PASSED [ 19%]
+tests/test_dependency_propagation.py::test_blocking_edge_stops_route PASSED [ 21%]
+tests/test_dependency_propagation.py::test_invalid_change_input_rejected PASSED [ 23%]
+tests/test_dependency_propagation.py::test_prune_archives_and_reports PASSED [ 26%]
+tests/test_events.py::test_replay_consistency PASSED                     [ 28%]
+tests/test_events.py::test_hash_chain_tamper_detected PASSED             [ 30%]
+tests/test_events.py::test_unknown_event_type_fails_replay PASSED        [ 33%]
+tests/test_events.py::test_decision_traceability PASSED                  [ 35%]
+tests/test_events.py::test_jsonl_roundtrip PASSED                        [ 38%]
+tests/test_events.py::test_impact_report_is_an_event PASSED              [ 40%]
+tests/test_events.py::test_proposed_state_change_needs_human_approval PASSED [ 42%]
+tests/test_graph.py::test_hyperedge_multiple_premises_and_conclusions PASSED [ 45%]
+tests/test_graph.py::test_edge_category_semantics_must_match_type PASSED [ 47%]
+tests/test_graph.py::test_one_evidence_multiple_claims PASSED            [ 50%]
+tests/test_graph.py::test_multiple_derivation_routes PASSED              [ 52%]
+tests/test_graph.py::test_evidence_edge_cannot_masquerade_as_entailment PASSED [ 54%]
+tests/test_graph.py::test_claim_and_evidence_examples_match_schemas PASSED [ 57%]
+tests/test_graph.py::test_examples_declare_their_epistemic_status PASSED [ 59%]
+tests/test_state_transitions.py::test_legal_transitions_accepted PASSED  [ 61%]
+tests/test_state_transitions.py::test_illegal_transitions_rejected PASSED [ 64%]
+tests/test_state_transitions.py::test_cross_dimension_write_rejected PASSED [ 66%]
+tests/test_state_transitions.py::test_truth_requires_assumption_and_scope_binding PASSED [ 69%]
+tests/test_state_transitions.py::test_cross_track_upgrade_rejected_in_engine PASSED [ 71%]
+tests/test_state_transitions.py::test_evidence_state_cannot_be_driven_by_derivation_event PASSED [ 73%]
+tests/test_state_transitions.py::test_work_state_cannot_jump_to_completed_via_engine PASSED [ 76%]
+tests/test_state_transitions.py::test_conflicting_evidence_not_overwritten PASSED [ 78%]
+tests/test_state_transitions.py::test_direct_supported_to_contradicted_blocked PASSED [ 80%]
+tests/test_state_transitions.py::test_reopen_flow PASSED                 [ 83%]
+tests/test_versioning.py::test_definition_change_preserves_old_version PASSED [ 85%]
+tests/test_versioning.py::test_version_rollback_rejected PASSED          [ 88%]
+tests/test_versioning.py::test_state_field_smuggling_rejected PASSED     [ 90%]
+tests/test_versioning.py::test_definition_fork_keeps_original PASSED     [ 92%]
+tests/test_versioning.py::test_fork_id_prefix_rule PASSED                [ 95%]
+tests/test_versioning.py::test_replay_after_revisions_matches_live_state PASSED [ 97%]
+tests/test_versioning.py::test_no_silent_overwrite_guard PASSED          [100%]
+
+============================== 42 passed in 0.11s ==============================

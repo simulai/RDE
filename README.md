@@ -97,7 +97,8 @@ RDE/
 ├── core/            最小原型：graph、versioning、events、state_machine、dependency_analysis
 ├── experiments/     Test A: UCS / Test B: W3 / Test C: TRVC（结构占位，不含未获批准的结论）
 ├── research_log/    decisions / hypotheses / counterexamples / audits
-├── tests/           自动化测试（≥10，覆盖七类场景）
+├── reports/         阶段报告：基线、对抗审计、设计↔实现一致性、最终判定
+├── tests/           自动化测试（含 tests/adversarial/ 反例审计套件）
 └── examples/        事件日志与图的示例数据（重建演示）
 ```
 
@@ -132,7 +133,7 @@ python3 -m venv .venv
 
 | 测试 | 目标 | 状态声明 |
 |------|------|----------|
-| Test A: UCS 八条件 | 多条件组合、分支、逻辑约束、反例管理（2^8=256 局部布尔组合空间） | 结构性测试数据，条件间不预设单调关系 |
+| Test A: UCS 八条件 | 多条件组合、分支、逻辑约束、反例管理（2^8=256 局部布尔组合空间） | **草案导入已就位**（`experiments/UCS/`：definitions / hypotheses / import_audit，全部标记待人工确认）；条件间不预设单调关系，关系假设以节点登记、无 entails 边 |
 | Test B: W3 不可达路由 | 研究策略调度、意图修订、失败路线与负臂/作弊臂审计 | **草稿，尚未获正式 pilot 批准；本仓库不含任何虚构实验结果** |
 | Test C: TRVC | 知识版本、例外学习、旧知识污染管理 | 待导入已有真实实验记录；不得重新解释或篡改实验结论 |
 

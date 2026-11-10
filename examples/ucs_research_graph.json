@@ -1,0 +1,1974 @@
+{
+  "_meta": {
+    "case": "Test A — UCS 八条件（导入草案合并图）",
+    "source": "由 experiments/UCS/definitions.json + hypotheses.json 合并生成",
+    "imported_at": "2026-11-10T00:00:00Z",
+    "import_status": "draft-import（草案导入，待人工确认）",
+    "loadable": true,
+    "warnings": [
+      "本图可直接载入 RDE（create_node 逐节点，无任何状态转换事件）；",
+      "edges 为空数组是刻意的：未经确认的关系不进入图结构（无 entails 边）；",
+      "全部节点 proposition_state=unknown、evidence_state=none、work_state=proposed；",
+      "2^8=256 为封闭组合空间（结构性计数），不枚举、不判定、不预设单调性。"
+    ],
+    "combination_space_size": 256,
+    "combination_space": "closed",
+    "monotonicity_assumed": false,
+    "entails_edges": 0
+  },
+  "nodes": [
+    {
+      "id": "definition-ucs-n1",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N1 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N1 选择性信息压缩。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-1"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n2",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N2 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N2 稳定离散化。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-2"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n3",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N3 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N3 可组合结构。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-3"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n4",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N4 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N4 后果接地。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-4"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n5",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N5 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N5 双向耦合。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-5"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n6",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N6 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N6 可修订性。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-6"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n7",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N7 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N7 历史连续性。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-7"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "definition-ucs-n8",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N8 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N8 有限资源协调。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-8"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed"
+    },
+    {
+      "id": "claim-ucs-rel-01-02",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N2。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n2"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N2 稳定离散化"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n2"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-02",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-01-03",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N3。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n3"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N3 可组合结构"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n3"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-03",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-01-04",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N4。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n4"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N4 后果接地"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n4"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-04",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-01-05",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N5。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n5"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N5 双向耦合"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n5"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-05",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-01-06",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N6。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n6"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N6 可修订性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n6"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-06",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-01-07",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N7。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n7"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N7 历史连续性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n7"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-07",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-01-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N1 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n1",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N1 选择性信息压缩",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n1",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n1",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-01-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-02-03",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N2 ↔ N3。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n2",
+          "definition-ucs-n3"
+        ],
+        "condition_labels": [
+          "N2 稳定离散化",
+          "N3 可组合结构"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n2",
+        "definition-ucs-n3"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-02-03",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-02-04",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N2 ↔ N4。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n2",
+          "definition-ucs-n4"
+        ],
+        "condition_labels": [
+          "N2 稳定离散化",
+          "N4 后果接地"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n2",
+        "definition-ucs-n4"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-02-04",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-02-05",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N2 ↔ N5。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n2",
+          "definition-ucs-n5"
+        ],
+        "condition_labels": [
+          "N2 稳定离散化",
+          "N5 双向耦合"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n2",
+        "definition-ucs-n5"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-02-05",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-02-06",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N2 ↔ N6。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n2",
+          "definition-ucs-n6"
+        ],
+        "condition_labels": [
+          "N2 稳定离散化",
+          "N6 可修订性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n2",
+        "definition-ucs-n6"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-02-06",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-02-07",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N2 ↔ N7。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n2",
+          "definition-ucs-n7"
+        ],
+        "condition_labels": [
+          "N2 稳定离散化",
+          "N7 历史连续性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n2",
+        "definition-ucs-n7"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-02-07",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-02-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N2 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n2",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N2 稳定离散化",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n2",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n2",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-02-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-03-04",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N3 ↔ N4。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n3",
+          "definition-ucs-n4"
+        ],
+        "condition_labels": [
+          "N3 可组合结构",
+          "N4 后果接地"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n3",
+        "definition-ucs-n4"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-03-04",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-03-05",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N3 ↔ N5。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n3",
+          "definition-ucs-n5"
+        ],
+        "condition_labels": [
+          "N3 可组合结构",
+          "N5 双向耦合"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n3",
+        "definition-ucs-n5"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-03-05",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-03-06",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N3 ↔ N6。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n3",
+          "definition-ucs-n6"
+        ],
+        "condition_labels": [
+          "N3 可组合结构",
+          "N6 可修订性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n3",
+        "definition-ucs-n6"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-03-06",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-03-07",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N3 ↔ N7。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n3",
+          "definition-ucs-n7"
+        ],
+        "condition_labels": [
+          "N3 可组合结构",
+          "N7 历史连续性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n3",
+        "definition-ucs-n7"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-03-07",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-03-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N3 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n3",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N3 可组合结构",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n3",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n3",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-03-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-04-05",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N4 ↔ N5。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n4",
+          "definition-ucs-n5"
+        ],
+        "condition_labels": [
+          "N4 后果接地",
+          "N5 双向耦合"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n4",
+        "definition-ucs-n5"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-04-05",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-04-06",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N4 ↔ N6。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n4",
+          "definition-ucs-n6"
+        ],
+        "condition_labels": [
+          "N4 后果接地",
+          "N6 可修订性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n4",
+        "definition-ucs-n6"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-04-06",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-04-07",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N4 ↔ N7。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n4",
+          "definition-ucs-n7"
+        ],
+        "condition_labels": [
+          "N4 后果接地",
+          "N7 历史连续性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n4",
+        "definition-ucs-n7"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-04-07",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-04-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N4 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n4",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N4 后果接地",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n4",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n4",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-04-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-05-06",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N5 ↔ N6。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n5",
+          "definition-ucs-n6"
+        ],
+        "condition_labels": [
+          "N5 双向耦合",
+          "N6 可修订性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n5",
+        "definition-ucs-n6"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-05-06",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-05-07",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N5 ↔ N7。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n5",
+          "definition-ucs-n7"
+        ],
+        "condition_labels": [
+          "N5 双向耦合",
+          "N7 历史连续性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n5",
+        "definition-ucs-n7"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-05-07",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-05-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N5 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n5",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N5 双向耦合",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n5",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n5",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-05-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-06-07",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N6 ↔ N7。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n6",
+          "definition-ucs-n7"
+        ],
+        "condition_labels": [
+          "N6 可修订性",
+          "N7 历史连续性"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n6",
+        "definition-ucs-n7"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-06-07",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-06-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N6 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n6",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N6 可修订性",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n6",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n6",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-06-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    },
+    {
+      "id": "claim-ucs-rel-07-08",
+      "type": "claim",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "关系假设槽位：结构枚举（无真值），关系类型与方向待人工确认"
+      },
+      "scope": "UCS 八条件关系假设登记（封闭配对空间，28 对）",
+      "content": "关系假设槽位：N7 ↔ N8。【待人工确认】关系类型（必要/充分/互斥/替代/联合/无关系）、方向与真值均未填写。",
+      "hypothesis_slot": {
+        "conditions": [
+          "definition-ucs-n7",
+          "definition-ucs-n8"
+        ],
+        "condition_labels": [
+          "N7 历史连续性",
+          "N8 有限资源协调"
+        ],
+        "relation": null,
+        "direction": null,
+        "monotonicity_assumed": false,
+        "asserted": false,
+        "representation": "hypothesis-node（以 claim 型承载；schema 暂无 hypothesis 类型——待人工确认是否新增）",
+        "status": "待人工确认"
+      },
+      "definition_versions": [
+        {
+          "id": "definition-ucs-n7",
+          "version": 1
+        },
+        {
+          "id": "definition-ucs-n8",
+          "version": 1
+        }
+      ],
+      "assumptions": [],
+      "dependency_nodes": [
+        "definition-ucs-n7",
+        "definition-ucs-n8"
+      ],
+      "proof_obligations": [
+        {
+          "id": "po-ucs-rel-07-08",
+          "statement": "待人工确认：该关系假设的形式化与验证义务",
+          "track": "mathematical",
+          "status": "open"
+        }
+      ],
+      "falsification_conditions": [
+        "待人工确认：可推翻该关系假设的观察/组合（当前不填写）"
+      ],
+      "current_evidence": [],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "next_research_action": {
+        "action": "待人工确认：由研究者填写关系类型、方向与依据",
+        "decision_ref": null
+      },
+      "routes": []
+    }
+  ],
+  "edges": []
+}

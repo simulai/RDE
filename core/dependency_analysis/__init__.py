@@ -31,6 +31,10 @@ def _route_status(route: dict, graph, delta: set[str]) -> str:
     - 推导前提被 invalidated → broken；前提元数据缺失 → unknown（不默认完好）。
     """
     premises = route.get("premises")
+    # 路线自身被撤销 → 直接 broken（F-C7 审计修复：此前只检查前提中的 derivation，
+    # 忽略了路线自身 status=invalidated）
+    if route.get("status") == "invalidated":
+        return "broken"
     if not premises:
         # 回退到 derived_from 边索引；若仍无前提元数据 → unknown
         premises = [
