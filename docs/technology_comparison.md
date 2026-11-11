@@ -234,14 +234,44 @@ RDE 原则第 8 条「历史记录不可被静默覆盖」与第 1 条「正确�
 | Q-TECH-06 | 哈希链的密钥/签名归属与防篡改强度（仅哈希 vs 签名）未讨论 | 待讨论 |
 | Q-TECH-07 | 若未来启用 C/E，事件 schema 与超边建模的迁移路径未做预案 | 待设计 |
 | Q-TECH-08 | NetworkX 星形展开与超边语义的等价性（哪些分析结论在转换后保持）未验证 | 待验证 |
+| Q-TECH-09 | 外部证据源（BootLoops 类 harness）的证书语义——正对照、provenance 分离、独立路线复现——与 RDE `evidence`/`proof_obligations` schema 的映射未设计 | 待设计 |
 
 ---
 
-## 8. 相关文档
+## 8. 外部框架记录：BootLoops（候选上游证据源，仅记录）
+
+> **状态：仅记录——未选型、未集成、未验证。** 本节不构成对 BootLoops 科学结论的
+> 认可，也不改变 H-TECH-001；按第 6 节禁令，不得从本节推出任何"已选定/已集成"
+> 结论。写入动机：2026-09 OpenAI Navier–Stokes 事件（主张争议、新闻稿事后修改、
+> "复现已知结果"批评）与 Anthropic *Claude-shaped science* 两案的对比分析。
+
+- **对象**：BootLoops 1.0——"Claude-shaped science" 的开源 LLM harness
+  （Anthropic 研究长文；GitHub `BootLoops-ai/bootloops`；bootloops.ai）。
+  定位：仪器包（带证明的递推、ball arithmetic 误差半径、完备性证书等可被 LLM
+  驱动的科学软件）+ skills（markdown 协议，编码"什么叫做完了"），模型无关。
+- **与 RDE 的关系（判断，非事实）**：互补分层——BootLoops 管**证据生产**的可信性
+  （仪器与协议），RDE 管**知识状态演化**的可审计性（事件溯源、依赖传播、状态机）。
+  假设性组合方式为"BootLoops 证书 → RDE evidence 事件（`data_ref`）"；
+  **映射未设计、未验证**（Q-TECH-09）。
+- **可借鉴协议清单**（记录，均未实现，逐条对应 RDE 编号）：
+  1. 正对照——检查须先证明"能失败"，否则不构成证据 → RDE `falsification_conditions`
+     目前仅有字段、无此语义；
+  2. provenance 分离——喂过拟合的 oracle 不得认证结果 → 原则 10 / F-E04 同源；
+  3. 独立路线在拟合未见过的点复现 → 对照 R-007/Q-007 路线独立性缺陷；
+  4. novelty 主张先审计文献 → R-023（`docs/design_risks.md`）；
+  5. refusal over invention——找不到就拒绝编造、记 unknown → 与 `underdetermined` 一致。
+- **引用**：Anthropic, *Claude-shaped science*（anthropic.com/research）；
+  M. D. Schwartz, *BootLoops 1.0* (2026), bootloops.ai；
+  GitHub pinned commit `66b680ce742e654cfe86da4f072a69061fe182b1`。
+
+---
+
+## 9. 相关文档
 
 - [`../README.md`](../README.md) — 项目定位与理论边界（第 2 节）
 - `docs/architecture.md` / `docs/graph_semantics.md` / `docs/event_sourcing.md` / `docs/dependency_propagation.md` — 被本比较所服务的架构语义
-- `docs/design_risks.md` — 假说 H-TECH-001 与 Q-TECH-001…08 的登记处
+- `docs/design_risks.md` — 假说 H-TECH-001 与 Q-TECH-001…09 的登记处；R-023（novelty 先例审计）
 - `schemas/` — JSON Schema，方案 A 的校验基础
+- BootLoops（github.com/BootLoops-ai/bootloops）— 第 8 节记录的候选上游证据源（仅记录）
 
 **声明**：本文档中所有倾向性判断均为待验证工程假说；RDE 本身也必须接受 RDE 的审计。
