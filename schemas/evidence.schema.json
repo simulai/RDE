@@ -30,6 +30,10 @@
     "supports": { "type": "array", "items": { "type": "string" }, "description": "被支持的 claim ID 列表" },
     "contradicts": { "type": "array", "items": { "type": "string" }, "description": "被反驳的 claim ID 列表（反例必须能改变知识状态，原则 5）" },
     "validity": { "enum": ["valid", "invalidated", "withdrawn"] },
+    "sufficiency": {
+      "enum": ["sufficient", "insufficient"],
+      "description": "证据充分性（F-D3 补录：core._recompute_evidence_state 据此得出 insufficient 状态；insufficient 不被强证据永久钉死，足量有效证据可回到 supported/contradicted）。"
+    },
     "invalidation": {
       "type": ["object", "null"],
       "required": ["reason", "actor", "seq"],

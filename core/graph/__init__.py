@@ -114,6 +114,29 @@ def validate_node(node: dict) -> None:
             if f not in node:
                 raise ValidationError(f"Derivation {node['id']} 缺少字段 {f}")
 
+    # F-E02/F-E03（原则 4/L1 与 state_semantics L3）：状态机的绑定与义务约束必须
+    # 在*所有*入口生效 —— 否则可绕过 set_proposition_state/set_work_state 直接携带。
+    if node.get("type") == "claim" and node.get("work_state") == "completed":
+        obligations = node.get("proof_obligations") or []
+        if not obligations:
+            raise ValidationError("L3: Claim 缺少证明义务记录，不得以 completed 创建")
+        open_ids = [o.get("id") for o in obligations
+                    if o.get("status") not in ("discharged", "withdrawn")]
+        if open_ids:
+            raise ValidationError(
+                f"L3: 证明义务未完成 {open_ids}，不得以 completed 创建（state_semantics L3）"
+            )
+    if node.get("proposition_state") in ("true_in_scope", "false_in_scope"):
+        if not node.get("assumptions"):
+            raise ValidationError(
+                "truth state 绑定缺失: 携带 true/false_in_scope 必须绑定假设集合"
+                "（原则 4/L1；创建入口与转换入口同样检查）"
+            )
+        if not node.get("scope"):
+            raise ValidationError(
+                "truth state 绑定缺失: 必须绑定非空适用范围 scope（原则 4/L1）"
+            )
+
 
 class ResearchGraph:
     """超图读模型：查询、遍历、路线索引。"""

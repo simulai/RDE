@@ -31,8 +31,13 @@ def _default_states(node: dict) -> dict:
 class RDE:
     """最小研究内核入口。"""
 
-    def __init__(self, log: EventLog | None = None):
+    def __init__(self, log: EventLog | list | tuple | None = None):
+        # 入口完整性：无论何种载入形式，都先做哈希链校验（F-A6 修复：曾存在
+        # 『传入未校验 EventLog 实例即绕过链校验』的入口不一致）。
+        if isinstance(log, (list, tuple)):
+            log = EventLog(list(log))
         self.log = log if log is not None else EventLog()
+        self.log.verify_chain()
         self.state = replay(self.log.events)
         self.graph = ResearchGraph(self.state)
 
@@ -61,14 +66,27 @@ class RDE:
         return cls(EventLog.load_jsonl(path))
 
     # ------------------------------------------------------------ 结构操作
+    def _ensure_new_node(self, node_id: str) -> None:
+        """创建入口前置存在性检查（F-A8 审计修复）。
+
+        _emit 的顺序是先 append 日志、再 apply；若 apply 因『重复创建』抛错，
+        该事件已写入日志 → 引擎自身日志将无法重放（毒化）。因此所有创建类
+        入口必须在写日志之前拒绝，重复创建的防线才有意义。
+        """
+        if self.graph.get(node_id) is not None:
+            raise ValidationError(f"节点已存在: {node_id}（事件溯源不允许覆盖）")
+
     def create_node(self, node: dict, *, actor: str = "human") -> dict:
         node = _default_states(node)
         validate_node(node)
+        self._ensure_new_node(node["id"])
         ev = self._emit("node_created", actor=actor, target=[node["id"]], payload={"node": node})
         return ev
 
     def create_edge(self, edge: dict, *, actor: str = "human") -> dict:
         validate_edge(edge)
+        if edge["id"] in self.graph.edges:
+            raise ValidationError(f"边已存在: {edge['id']}（事件溯源不允许覆盖）")
         missing = [n for n in (*edge["premises"], *edge["conclusions"]) if self.graph.get(n) is None]
         if missing:
             raise ValidationError(f"边 {edge['id']} 引用了不存在的节点: {sorted(set(missing))}")
@@ -89,6 +107,7 @@ class RDE:
         original = self.graph.require(node_id)
         forked = fork_node(original, new_id, changes)
         validate_node(forked)
+        self._ensure_new_node(new_id)
         self._emit("node_created", actor=actor, target=[new_id], payload={"node": forked})
         self._emit("fork_created", actor=actor, target=[new_id],
                    payload={"original": node_id, "fork": new_id})
@@ -99,6 +118,7 @@ class RDE:
         """新对象取代旧对象（旧对象仍可回溯，不删除）。"""
         new_node = _default_states(new_node)
         validate_node(new_node)
+        self._ensure_new_node(new_node["id"])
         self._emit("node_created", actor=actor, target=[new_node["id"]], payload={"node": new_node})
         old = self.graph.require(old_id)
         if old.get("work_state") != "superseded":
@@ -123,6 +143,18 @@ class RDE:
     ) -> dict:
         node = self.graph.require(node_id)
         frm = node.get("proposition_state")
+        # F-E01（原则 10 / architecture §5）：非 human actor 不得*执行*真值语义升级，
+        # 只能写入 proposed_only 提议（提议本身不改变状态）。
+        if (
+            to_state in ("true_in_scope", "false_in_scope")
+            and not proposed_only
+            and actor != "human"
+        ):
+            raise IllegalTransition(
+                f"actor={actor} 不得执行命题语义状态升级 {frm} → {to_state}"
+                "（原则 10：Agent 不得以自我评价授予语义状态）；"
+                "请使用 proposed_only 提议并由 human 批准执行"
+            )
         if not proposed_only:
             sm.check_proposition_transition(frm, to_state, justification=justification,
                                             scope=node.get("scope"))
@@ -153,6 +185,18 @@ class RDE:
         node = self.graph.require(node_id)
         frm = node.get("work_state")
         sm.check_work_transition(frm, to_state, reopen=reopen)
+        # L3（state_semantics §4）：Claim → completed 前，证明义务必须全部完成。
+        if node.get("type") == "claim" and to_state == "completed":
+            obligations = node.get("proof_obligations") or []
+            if not obligations:
+                raise IllegalTransition("L3: Claim 缺少证明义务记录，不得 completed")
+            open_ids = [o.get("id") for o in obligations
+                        if o.get("status") not in ("discharged", "withdrawn")]
+            if open_ids:
+                raise IllegalTransition(
+                    f"L3: 证明义务未完成 {open_ids}，Claim 不得 completed"
+                    "（数学轨/经验轨各有验收路径，state_semantics L3）"
+                )
         payload = {"from": frm, "to": to_state, "reason": reason}
         if reopen:
             payload["reopen"] = True
@@ -177,6 +221,7 @@ class RDE:
         validate_node(derivation)
         if derivation.get("status") is None:
             derivation["status"] = "draft"
+        self._ensure_new_node(derivation["id"])
         return self._emit("derivation_started", actor=actor, target=[derivation["id"]],
                           payload={"derivation": derivation})
 
@@ -199,6 +244,7 @@ class RDE:
     def append_evidence(self, evidence: dict, *, actor: str = "human") -> dict:
         evidence = _default_states(evidence)
         validate_node(evidence)
+        self._ensure_new_node(evidence["id"])
         ev = self._emit("evidence_appended", actor=actor, target=[evidence["id"]],
                         payload={"evidence": evidence})
         targets = sorted(set(evidence.get("supports", [])) | set(evidence.get("contradicts", [])))
@@ -224,6 +270,31 @@ class RDE:
                     claim_id, "invalidated", driven_by=["evidence_invalidated"], actor="system"))
             events.extend(self._recompute_evidence_state(
                 claim_id, driver="evidence_invalidated", actor="system", evidence_id=evidence_id))
+        return events
+
+    def withdraw_evidence(self, evidence_id: str, *, reason: str,
+                          actor: str = "human") -> list[dict]:
+        """证据撤回（source retraction）：validity=withdrawn，随后重算证据状态。
+
+        与 invalidate 的语义区别：撤回=来源撤回；失效=判定/数据错误。
+        两者都经显式事件 + 重算（F-D1 审计修复：evidence_withdrawn 的事件类型与
+        重放 handler 一直存在，但缺引擎 API，导致文档承诺的"撤回"路径不可达）。
+        """
+        ev_node = self.graph.require(evidence_id)
+        if ev_node["type"] != "evidence":
+            raise RDEError(f"{evidence_id} 不是 evidence")
+        if ev_node.get("validity") == "withdrawn":
+            raise IllegalTransition(f"{evidence_id} 已撤回，禁止重复撤回")
+        events = [self._emit("evidence_withdrawn", actor=actor, target=[evidence_id],
+                             payload={"evidence_id": evidence_id, "reason": reason})]
+        targets = sorted(set(ev_node.get("supports", [])) | set(ev_node.get("contradicts", [])))
+        for claim_id in targets:
+            claim = self.graph.require(claim_id)
+            if claim.get("evidence_state") not in (None, "none", "invalidated"):
+                events.append(self.set_evidence_state(
+                    claim_id, "invalidated", driven_by=["evidence_withdrawn"], actor="system"))
+            events.extend(self._recompute_evidence_state(
+                claim_id, driver="evidence_withdrawn", actor="system", evidence_id=evidence_id))
         return events
 
     def _recompute_evidence_state(self, claim_id: str, *, driver: str, actor: str,
@@ -282,6 +353,7 @@ class RDE:
             "work_state": "completed",
         })
         validate_node(node)
+        self._ensure_new_node(node_id)
         self._emit("node_created", actor=actor, target=[node_id], payload={"node": node})
         self._emit("decision_recorded", actor=actor, target=[node_id], payload={"decision": decision})
         return node_id
@@ -292,6 +364,16 @@ class RDE:
                           actor: str = "human") -> dict:
         """回填决策实际结果（M7：决策是否有效）。"""
         node = self.graph.require(node_id)
+        # F-E04（原则 10）：决策有效性判定需人类签署或外部验证引用，agent 不得自评生效。
+        if (
+            decision_effective is not None
+            and actor != "human"
+            and not external_validation_ref
+        ):
+            raise IllegalTransition(
+                f"actor={actor} 不得自评 decision_effective（原则 10）："
+                "需 human 签署，或提供 external_validation_ref（外部验证引用）"
+            )
         decision = dict(node["decision"])
         decision["actual_outcome"] = actual_outcome
         decision["decision_effective"] = decision_effective

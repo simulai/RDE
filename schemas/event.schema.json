@@ -130,7 +130,7 @@
             "type": "object",
             "required": ["change", "directly_affected", "still_valid", "unjudgeable"],
             "properties": {
-              "change": { "type": "object", "required": ["node", "kind"], "properties": { "node": { "type": "string" }, "kind": { "enum": ["modified", "refuted", "withdrawn", "superseded"] }, "seq": { "type": "integer" } }, "additionalProperties": false },
+              "change": { "type": "object", "required": ["node", "kind"], "properties": { "node": { "oneOf": [ { "type": "string" }, { "type": "array", "items": { "type": "string" }, "minItems": 1 } ] }, "kind": { "enum": ["modified", "refuted", "withdrawn", "superseded"] }, "seq": { "type": "integer" } }, "additionalProperties": false },
               "directly_affected": { "type": "array", "items": { "type": "string" } },
               "propagated": { "type": "array", "items": { "type": "object" } },
               "still_valid": { "type": "array", "items": { "type": "string" } },

@@ -1,0 +1,300 @@
+{
+  "_meta": {
+    "case": "Test A — UCS 八条件",
+    "source": "《项目启动任务书》§7 Test A — UCS 八条件（条件名称逐字来自任务书）",
+    "imported_at": "2026-11-10T00:00:00Z",
+    "import_status": "draft-import（草案导入，待人工确认）",
+    "state_policy": "全部 proposition_state=unknown、evidence_state=none、work_state=proposed；任何未经确认的内容不写入",
+    "warnings": [
+      "条件名称来自任务书原文；每条条件的完整语义与形式化定义【待人工确认】——本文件不代填、不推断。",
+      "本文件不含任何条件间关系断言；关系假设登记在 hypotheses.json，全部为待确认槽位（非 entails 边）。",
+      "不预设条件之间存在单调关系（monotonicity 未假设）。",
+      "局部布尔组合空间 2^8 = 256 是封闭结构空间（仅计数）；本文件不枚举、不判定其中任何组合。",
+      "每个条件含 necessity_claim 与 falsification_conditions 字段，但均为待人工确认的占位：necessity_claim.asserted=false，不构成任何必要性断言。"
+    ],
+    "combination_space_size": 256,
+    "combination_space": "closed"
+  },
+  "conditions": [
+    {
+      "id": "definition-ucs-n1",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N1 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N1 选择性信息压缩。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-1"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N1 选择性信息压缩 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n1",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n2",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N2 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N2 稳定离散化。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-2"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N2 稳定离散化 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n2",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n3",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N3 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N3 可组合结构。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-3"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N3 可组合结构 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n3",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n4",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N4 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N4 后果接地。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-4"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N4 后果接地 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n4",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n5",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N5 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N5 双向耦合。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-5"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N5 双向耦合 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n5",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n6",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N6 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N6 可修订性。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-6"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N6 可修订性 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n6",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n7",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N7 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N7 历史连续性。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-7"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N7 历史连续性 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n7",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "definition-ucs-n8",
+      "type": "definition",
+      "version": 1,
+      "created_at": "2026-11-10T00:00:00Z",
+      "source": {
+        "origin": "human",
+        "ref": "任务书 §7 Test A",
+        "note": "条件名 N8 逐字来自任务书；完整定义待人工确认"
+      },
+      "scope": "UCS 八条件（任务书 §7 Test A）",
+      "content": "N8 有限资源协调。【待人工确认：完整定义与形式化】",
+      "labels": [
+        "ucs-condition",
+        "index-8"
+      ],
+      "proposition_state": "unknown",
+      "evidence_state": "none",
+      "work_state": "proposed",
+      "necessity_claim": {
+        "statement": "N8 有限资源协调 是 UCS/AGI 的必要条件（主张文本【待人工确认】）",
+        "asserted": false,
+        "proposition_state": "unknown",
+        "evidence_state": "none",
+        "status": "待人工确认",
+        "note": "必要性主张以独立字段登记；未确认前不产生 entail/证明关系，也不升级为定理"
+      },
+      "falsification_conditions": [
+        {
+          "id": "falsify-ucs-n8",
+          "condition": "【待人工确认】证伪 N{i} 必要性的观察或组合（字段已就位，内容不代填）",
+          "status": "待人工确认"
+        }
+      ]
+    }
+  ]
+}
