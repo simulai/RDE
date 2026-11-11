@@ -92,7 +92,7 @@ RDE **不是**：自动科研工具、多 Agent 任务调度器、已证明的 A
 ```
 RDE/
 ├── README.md / LICENSE / CONTRIBUTING.md / ROADMAP.md
-├── docs/            愿景、研究问题、理论边界、架构、状态语义、事件溯源、依赖传播、可证伪性、技术选型、风险登记
+├── docs/            愿景、研究问题、理论边界、架构、状态语义、事件溯源、依赖传播、可证伪性、技术选型、风险登记、能力清单、消融研究
 ├── schemas/         node / edge / event / claim / evidence 的 JSON Schema + 示例
 ├── core/            最小原型：graph、versioning、events、state_machine、dependency_analysis
 ├── experiments/     Test A: UCS / Test B: W3 / Test C: TRVC（结构占位，不含未获批准的结论）
